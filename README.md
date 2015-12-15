@@ -20,4 +20,20 @@ rer
 3. item
 
 This Should be a code block
-	fsdfsfdsfdninife
+  public static class ProductManagerODataClient
+  {
+  //Configurar aqui o endereço por defeito do web service
+  private static string _address = "http://localhost:29833/odata/";
+  
+  public static ODataClient GetDefaultClient()
+  {
+  return new ODataClient(_address);
+  }
+  
+  public static ODataClient GetCustomClient(string address)
+  {
+  return new ODataClient(address);
+  }
+  }
+  
+Should end here
