@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ProductManager.Entities.Product>
+
+@{
+    ViewBag.Title = "Products List";
+}
+
+<h3>All Products</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StandardCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ListPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StandardCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ListPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.FullName)
+        </td>
+        <td>
+            @if (User.IsInRole("Admin") || User.Identity.Name == item.Employee.Email)
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId })
+                Write(" | ");
+            }
+
+            @Html.ActionLink("Details", "Details", new { id = item.ProductId })
+
+            @if (User.IsInRole("Admin") || User.Identity.Name == item.Employee.Email)
+            {
+                Write(" | ");
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,75 @@
+﻿@model ProductManager.Entities.Product
+
+@{
+    ViewBag.Title = Model.Name + " Details";
+}
+@if (ViewBag.Message != null) {
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Warning!</strong> @ViewBag.Message
+</div>
+}
+<h4>Product Details</h4>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StandardCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StandardCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubCategory.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.FullName)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Admin") || User.Identity.Name == Model.Employee.Email)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId });
+        Write(" | ");
+    }
+    @Html.ActionLink("Back to Products List", "Index")
+</p>
