@@ -22,7 +22,7 @@ Nesta camada estão presentes o projeto MVC e respetivo projeto de testes.
 Ambos apenas referenciam o projetos Entities.
 O projeto de testes foi criado mas ainda não foi implementado nenhum teste.
 
-#
+#    
 
 ##Detalhes Técnicos
 
