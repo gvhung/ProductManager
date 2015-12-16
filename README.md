@@ -28,24 +28,29 @@ O projeto de testes foi criado mas ainda não foi implementado nenhum teste.
 - Na classe Employee foi acrescentado a propriedade Email para servir de elo de ligação entre a tabela de empregados da base de dados principal e a tabela de utilizadores da base de dados de autenticação do interface web.
 - Foi criada a propriedad FullName na classe Employee para ser mais fácil obter uma string com o primeiro e último nome do empregado mantendo-se assim o requisito do projecto de guardar o nome em três campos: FirstName, MiddleName e LastName.
 - A propriedade Title foi implementada com o enum PersonTitle.
+
 ###ProductManager.DataAccess
 - O acesso aos dados via EntityFramework foi implementado com a abordagem Code First.
 - Foi criado o interface IProductManagerContext para facilitar a abstração do contexto o projecto de testes.
 - A classe ProductManagerInitializer contém a implementação para inicializar a base de dados principal com dados "demo" sempre que o modelo de dados sofra alterações.
+
 ###ProductManager.WebApi
 - Este projeto utiliza pacote Nuget Microsoft.AspNet.OData de forma a implementar o padrão OData v4.
 - Os controllers foram implementados para permitirem a injeção de dependencias para que se consiga efetuar teste sobre os mesmos sem utilizar o ambiente de produção.
 - Todos os controllers são do tipo ODataController e foram criados através de um template instalado com a extensão do Visual Studio OData v4 Web API Scaffolding.
+
 ###ProductManager.WebApi.Tests
 - São feitos teste as métodos Get,Post,Put,Patch e Delete de todos os controladores.
 - Foi utilizado o padrão de repositório para efetuar os teste sem comprometer a base de dados que está em produção,
 - O repositório deriva da classe IProductManagerContext e inicializa com os mesmos dados demo cada vez que arrancam os testes.
+
 ###ProductManager.MVC
 - Este projeto utiliza pacote Nuget Simple.OData.Client para facilitar a obtenção de dados a partir de um web service odata.
 - Para o sistema de autenticação foi instalado o pacote Nuget Microsoft.AspNet.Identity.Samples poque é uma solução mais completa do que aquela que está no template MVC do Visual Studio. Assim fica automaticamente implementado o sistema de gestão de autenticação com roles. Este modelo de autenticação utiliza Entity Framework com a abordagem Code First.
 - Os controllers foram implementados para permitir a injeção de dependencias para que se consiga efetuar teste sobre os mesmos sem utilizar o ambiente de produção.
 - Foi criada a classe ProductManagerODataClient para gerar objetos do tipo ODataClient. Esta classe tem uma propriedade privada (address) do tipo string, que armazena o endereço do webservice a utilizar, e dois métodos um deles para devolver o objeto configurado para ligar ao endereço da propriedade address e outro método que aceita uma string como argumento para devolver um objeto que se liga ao endereço passado em parâmetro, este método foi idealizado para utilizar nos testes.
 - As views desta aplicação foram adaptadas a partir das que são criadas por scaffolding.
+
 ###ProductManager.MVC.Test
 - Este projeto foi criado mas não foi implementado.
 - Para a implementação dos testes está planeado arrancar uma instância self-hosted do web service utilizando um repositório com dados demo. Desta forma serão executados os controllers através do construtor que aceita o endereço do webservice como argumento, assim o métodos vão chamar um web service diferente do que está em produção.
