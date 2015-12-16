@@ -8,16 +8,16 @@ A aplicação web utiliza uma base de dados própria, em SQL Server, para gerir 
 O web service foi desenvolvido em ASP.NET Web Api e foi implementado o padrão OData em todos os controladores. O acesso à base de dados SQL Server, onde estão os dados da aplicação é feito através de Entity Framework.
 
 Estão solução utiliza três camadas:
-###1 - Data Access Layer
+###1. Data Access Layer
 Nesta camada existem dois projectos, Entities e DataAccess. 
 O projeto Entities é referenciado em todos os outros projetos da solução e disponibiliza todas as classes e enums necessários para implementar a estrutura de dados.
 O projeto DataAccess disponibiliza a classe que permite instanciar o objeto de contexto para acesso à base de dados com Entity Framework, é também disponilizado um interface desta classe para permitir uma melhor abstração do contexto durante a realização de testes.
 
-###2 - Web Service
+###2. Web Service
 Nesta camada estão presentes o projeto WebApi e respetivo projeto de testes.
 Ambos referenciam os projetos da camada Data Access Layer.
 
-###3 - MVC Application
+###3. MVC Application
 Nesta camada estão presentes o projeto MVC e respetivo projeto de testes.
 Ambos apenas referenciam o projetos Entities.
 O projeto de testes foi criado mas ainda não foi implementado nenhum teste.
