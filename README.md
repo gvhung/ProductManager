@@ -22,7 +22,10 @@ Nesta camada estão presentes o projeto MVC e respetivo projeto de testes.
 Ambos apenas referenciam o projetos Entities.
 O projeto de testes foi criado mas ainda não foi implementado nenhum teste.
 
+#
+
 ##Detalhes Técnicos
+
 ###ProductManager.Entities
 - Todas as classes têm na propriedade DateModified como valor por defeito DateTime.Now, desta forma não há necessidade de implementar mecanismos para atribuição do valor para esta propriedade.
 - Na classe Employee foi acrescentado a propriedade Email para servir de elo de ligação entre a tabela de empregados da base de dados principal e a tabela de utilizadores da base de dados de autenticação do interface web.
@@ -55,6 +58,8 @@ O projeto de testes foi criado mas ainda não foi implementado nenhum teste.
 - Este projeto foi criado mas não foi implementado.
 - Para a implementação dos testes está planeado arrancar uma instância self-hosted do web service utilizando um repositório com dados demo. Desta forma serão executados os controllers através do construtor que aceita o endereço do webservice como argumento, assim o métodos vão chamar um web service diferente do que está em produção.
 
+#
+
 ##Configuração
 Para implementar este projeto é necessário garantir previamente a correcta configuração para três pârametros:
 1. Indicar a connection string (ProductManager) com a localização da base de dados principal no ficheiro web.config do projeto WebApi.
@@ -69,8 +74,12 @@ Assim sendo, o accesso à aplicação pela primeira vez deve ser feito com este 
 - **Utilizador**: georgeft@example.com
 - **Password**: Pa$$w0rd
 
+#
+
 ##Funcionalidades Web Service
 O web service apresenta no endpoint /odata a implementação de consultas padrão OData para as entidades: /Employees, /Categories, /SubCategories e /Products.
+
+#
 
 ##Funcionalidades MVC Application
 Para utilizar a aplicação é necessário estar autenticado. Caso um utilizador anónimo tente aceder à aplicação será redirecionado para a página /Account/Login onde poderá efetuar a sua autenticação ou aceder à página de registo de novos utilizadores /Account/Register. Quando é criado um novo utilizador é criado automaticamente um novo empregado através do web service, todos os utilizadores criados neste método pertencem ao role User.
